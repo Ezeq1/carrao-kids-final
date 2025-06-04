@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carrão Kids</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- LOGO E TÍTULO -->
+    <img src="logo.png" alt="Carrão Kids Logo" class="logo" />
+    <h1>Carrão Kids</h1>
+
+    <!-- ÁREA DE AUTENTICAÇÃO -->
+    <div id="auth-container">
+      <!-- LOGIN -->
+      <div id="login-form" class="form-box">
+        <h2>Login</h2>
+        <input type="text" id="login-user" placeholder="Usuário" autocomplete="username" />
+        <input type="password" id="login-pass" placeholder="Senha" autocomplete="current-password" />
+        <button id="btn-login">Entrar</button>
+        <p>ou <a href="#" id="link-to-cadastro">cadastre-se</a></p>
+        <p class="error" id="login-error"></p>
+      </div>
+
+      <!-- CADASTRO -->
+      <div id="cadastro-form" class="form-box" style="display:none;">
+        <h2>Cadastro</h2>
+        <input type="text" id="cadastro-user" placeholder="Nome de usuário" autocomplete="username" />
+        <input type="email" id="cadastro-email" placeholder="E-mail" autocomplete="email" />
+        <input type="password" id="cadastro-pass" placeholder="Senha" autocomplete="new-password" />
+        <select id="cadastro-funcao">
+          <option value="professor">Professor</option>
+          <option value="auxiliar">Auxiliar</option>
+        </select>
+        <select id="cadastro-sala">
+          <option value="Kids 1">Kids 1 (0–4 anos)</option>
+          <option value="Kids 2">Kids 2 (5–11 anos)</option>
+        </select>
+        <button id="btn-cadastro">Cadastrar</button>
+        <p>ou <a href="#" id="link-to-login">voltar ao login</a></p>
+        <p class="error" id="cadastro-error"></p>
+      </div>
+    </div>
+
+    <!-- ÁREA PRINCIPAL DO VOLUNTÁRIO -->
+    <div id="main" style="display:none;">
+      <div class="header-main">
+        <h2>Bem-vindo, <span id="user-name"></span></h2>
+        <button id="btn-logout" class="sair-btn">Sair</button>
+      </div>
+
+      <!-- TABS PARA VOLUNTÁRIO -->
+      <div class="tabs">
+        <button class="tab-button active" data-tab="tab-escalas">Escalas</button>
+        <button class="tab-button" data-tab="tab-trocas">Trocas Pendentes</button>
+      </div>
+
+      <!-- ABA ESCALAS -->
+      <div class="tab-content active" id="tab-escalas">
+        <h3>Escalas (Domingos)</h3>
+        <div id="escalas"></div>
+      </div>
+
+      <!-- ABA TROCAS -->
+      <div class="tab-content" id="tab-trocas">
+        <h3>Trocas Pendentes</h3>
+        <div id="trocas-pendentes"></div>
+      </div>
+    </div>
+
+    <!-- PAINEL DO ADMIN -->
+    <div id="admin" style="display:none;">
+      <div class="header-main">
+        <h2>Painel Admin</h2>
+        <button id="btn-logout-admin" class="sair-btn">Sair</button>
+      </div>
+
+      <!-- TABS PARA ADMIN -->
+      <div class="tabs">
+        <button class="tab-button active" data-tab="tab-admin-users">Usuários</button>
+        <button class="tab-button" data-tab="tab-admin-escalas">Escalas Gerais</button>
+        <button class="tab-button" data-tab="tab-admin-transfer">Transferências</button>
+      </div>
+
+      <!-- ABA USUÁRIOS -->
+      <div class="tab-content active" id="tab-admin-users">
+        <h3>Gerenciar Usuários</h3>
+        <form id="form-admin-add" class="form-admin">
+          <input type="text" id="admin-new-user" placeholder="Nome do usuário" />
+          <input type="email" id="admin-new-email" placeholder="E-mail inicial" />
+          <input type="password" id="admin-new-pass" placeholder="Senha inicial" />
+          <select id="admin-new-funcao">
+            <option value="professor">Professor</option>
+            <option value="auxiliar">Auxiliar</option>
+            <option value="admin">Admin</option>
+          </select>
+          <select id="admin-new-sala">
+            <option value="Kids 1">Kids 1 (0–4 anos)</option>
+            <option value="Kids 2">Kids 2 (5–11 anos)</option>
+            <option value="—">— (Somente admin)</option>
+          </select>
+          <button id="btn-admin-add">Criar Usuário</button>
+        </form>
+        <div id="admin-users-list"></div>
+      </div>
+
+      <!-- ABA ESCALAS GERAIS -->
+      <div class="tab-content" id="tab-admin-escalas">
+        <h3>Escalas Gerais</h3>
+        <div id="admin-escalas"></div>
+      </div>
+
+      <!-- ABA TRANSFERÊNCIAS -->
+      <div class="tab-content" id="tab-admin-transfer">
+        <h3>Transferir Usuário entre Escalas</h3>
+        <form id="form-admin-transfer" class="form-admin">
+          <label>Data Origem</label>
+          <select id="admin-origem-date"></select>
+          <label>Usuário</label>
+          <select id="admin-transfer-user"></select>
+          <label>Data Destino</label>
+          <select id="admin-destino-date"></select>
+          <button id="btn-admin-transfer">Transferir</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
